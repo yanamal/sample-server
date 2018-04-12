@@ -32,4 +32,5 @@ def hello():
 @app.route('/response')
 def formresponse():
   fl = request.args.get('flavor')
-  return render_template('filled_template.html', flavor=fl)
+  something = request.args.get('yourname')
+  return render_template('filled_template.html', flavor=fl, name=something)
