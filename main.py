@@ -29,7 +29,6 @@ if not production_environment:
 def hello():
     return redirect('/stat/form.html')
 
-
 @app.route('/response')
 def formresponse():
   fl = request.args.get('flavor')
