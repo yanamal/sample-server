@@ -14,23 +14,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-from flask import Flask,redirect,render_template,request
-import logging, os
+import webapp2
 
-app = Flask(__name__)
+class MainHandler(webapp2.RequestHandler):
+    def get(self):
+        self.response.write('Hello world!')
 
-# Set up debug messages, when not in "real world" production mode
-production_environment = os.getenv('SERVER_SOFTWARE').startswith('Google App Engine/')
-if not production_environment:
-    app.debug = True
-    logging.info('debugging!')
-
-@app.route('/')
-def hello():
-    return redirect('/stat/form.html')
-
-@app.route('/response')
-def formresponse():
-  fl = request.args.get('flavor')
-  myname = request.args.get('yourname')
-  return render_template('filled_template.html', flavor=fl, name=myname)
+app = webapp2.WSGIApplication([
+    ('/', MainHandler)
+], debug=True)
