@@ -33,4 +33,4 @@ def hello():
 def formresponse():
   nm = request.args.get('yourname')
   fl = request.args.get('flavor')
-  return render_template('filled_template.html',yourname=nm, flavor=fl)
+  return render_template('filled_template.html',name=nm, flavor=fl)
